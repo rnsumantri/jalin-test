@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -26,6 +27,7 @@ public class MasterUserService {
                     .name(masterUsers.getName())
                     .phone(masterUsers.getPhone())
                     .roleId(masterUsers.getMasterRole().getId())
+                    .hashPassword(masterUsers.getHashPassword())
                     .build();
             getAllUsersList.add(getAllUsers);
         });
@@ -33,6 +35,7 @@ public class MasterUserService {
     }
 
     public MasterUsers insertMasterUser(MasterUsers masterUsers){
+        String passEncode = Base64.getEncoder().encodeToString(masterUsers.getHashPassword().getBytes());
         MasterUsers newMasterUsers = MasterUsers.builder()
                 .id(masterUsers.getId())
                 .name(masterUsers.getName())
@@ -44,8 +47,14 @@ public class MasterUserService {
                 .modifiedDate(LocalDateTime.now())
                 .masterRole(masterUsers.getMasterRole())
                 .isActive(masterUsers.getIsActive())
+                .hashPassword(passEncode)
                 .build();
         return masterUsersRepository.save(newMasterUsers);
+    }
+
+    public MasterUsers getUserByUsername(String username) {
+        MasterUsers user = masterUsersRepository.findMasterUsersByUsername(username).orElse(null);
+        return user;
     }
 
 }

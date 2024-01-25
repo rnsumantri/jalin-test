@@ -20,5 +20,6 @@ public class GetAllUsers {
     private String modifiedBy;
     private String modifiedDate;
     private Boolean isActive;
+    private String hashPassword;
     private Long roleId;
 }

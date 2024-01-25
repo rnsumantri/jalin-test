@@ -1,12 +1,13 @@
 package com.ronisumantri.jalinbisa.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+import java.util.List;
+
+@Getter
+@Setter
 @Entity
 @Builder
 @NoArgsConstructor
@@ -22,6 +23,7 @@ public class MasterRole {
     private Boolean delete;
     private Boolean is_active;
 
-    @OneToOne(mappedBy = "masterRole", fetch = FetchType.LAZY)
-    private MasterUsers masterUsers;
+    @OneToMany(mappedBy = "masterRole", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<MasterUsers> masterUsers;
 }

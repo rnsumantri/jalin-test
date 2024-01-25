@@ -1,14 +1,14 @@
 package com.ronisumantri.jalinbisa.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Builder
 @NoArgsConstructor
@@ -24,10 +24,13 @@ public class MasterUsers {
     private LocalDateTime createdDate;
     private String modifiedBy;
     private LocalDateTime modifiedDate;
+    private String hashPassword;
     private Boolean isActive;
 
-    @JoinColumn(name = "role_id")
-    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id",referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+
     private MasterRole masterRole;
 
 }
