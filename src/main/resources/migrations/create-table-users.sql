@@ -16,7 +16,7 @@ CREATE TABLE master_users (
 CREATE TABLE public.master_role (
 	id bigserial NOT NULL,
 	role_name varchar(50) NULL,
-	"create" bool NULL DEFAULT false,
+	"insert" bool NULL DEFAULT false,
 	"read" bool NULL DEFAULT false,
 	"update" bool NULL DEFAULT false,
 	"delete" bool NULL DEFAULT false,

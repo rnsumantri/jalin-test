@@ -16,7 +16,7 @@ public class MasterRole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String role_name;
-    private Boolean create;
+    private Boolean insert;
     private Boolean read;
     private Boolean update;
     private Boolean delete;

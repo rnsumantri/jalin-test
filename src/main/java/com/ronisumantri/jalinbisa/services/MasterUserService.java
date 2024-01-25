@@ -7,6 +7,7 @@ import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,22 @@ public class MasterUserService {
             getAllUsersList.add(getAllUsers);
         });
         return getAllUsersList;
+    }
+
+    public MasterUsers insertMasterUser(MasterUsers masterUsers){
+        MasterUsers newMasterUsers = MasterUsers.builder()
+                .id(masterUsers.getId())
+                .name(masterUsers.getName())
+                .username(masterUsers.getUsername())
+                .phone(masterUsers.getPhone())
+                .createdBy(masterUsers.getCreatedBy())
+                .modifiedBy(masterUsers.getModifiedBy())
+                .createdDate(LocalDateTime.now())
+                .modifiedDate(LocalDateTime.now())
+                .masterRole(masterUsers.getMasterRole())
+                .isActive(masterUsers.getIsActive())
+                .build();
+        return masterUsersRepository.save(newMasterUsers);
     }
 
 }

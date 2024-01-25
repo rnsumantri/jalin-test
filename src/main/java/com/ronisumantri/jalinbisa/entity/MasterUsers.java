@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Entity
 @Builder
@@ -19,9 +21,9 @@ public class MasterUsers {
     private String name;
     private String phone;
     private String createdBy;
-    private String createdDate;
+    private LocalDateTime createdDate;
     private String modifiedBy;
-    private String modifiedDate;
+    private LocalDateTime modifiedDate;
     private Boolean isActive;
 
     @JoinColumn(name = "role_id")
