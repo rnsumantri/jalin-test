@@ -2,6 +2,7 @@ package com.ronisumantri.jalinbisa.services;
 
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,6 +21,18 @@ public class ReportServices {
             String relativePath = Paths.get(currentDirectory, "src/config", "config.txt").toString();
             List<String> lines = Files.readAllLines(Paths.get(relativePath));
             String directoryPath = Paths.get(currentDirectory, "src/output").toString();
+            File directory = new File(directoryPath);
+            if (!directory.exists()) {
+                boolean created = directory.mkdir();
+                if (created) {
+                    System.out.println("Directory created successfully.");
+                } else {
+                    System.out.println("Failed to create directory.");
+                }
+            } else {
+                System.out.println("Directory already exists.");
+            }
+
 
             List<Map<String, String>> listBank = new ArrayList<>();
             Map<String, List<Map<String, String>>> acquirerIssuer = new HashMap<>();
