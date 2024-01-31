@@ -17,18 +17,18 @@ CREATE TABLE public.master_users (
 
 CREATE TABLE public.master_role (
     id bigserial NOT NULL,
-    role_name varchar(50) NULL,
+    role varchar(50) NOT NULL,
     "insert" bool NULL DEFAULT false,
     "read" bool NULL DEFAULT false,
     "update" bool NULL DEFAULT false,
     "delete" bool NULL DEFAULT false,
     is_active bool NULL DEFAULT true,
     CONSTRAINT master_role_pkey PRIMARY KEY (id),
-    CONSTRAINT master_role_unique UNIQUE (role_name)
+    CONSTRAINT master_role_unique UNIQUE (role)
 );
 
 INSERT INTO public.master_role
-(role_name, "insert", "read", "update", "delete", is_active)
+(role, "insert", "read", "update", "delete", is_active)
 VALUES('admin', true, true, true, true, true);
 
 INSERT INTO public.master_users

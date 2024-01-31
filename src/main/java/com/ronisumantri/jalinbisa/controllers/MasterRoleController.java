@@ -24,9 +24,13 @@ public class MasterRoleController {
 
     @PostMapping("/insert")
     public String saveMasterRole(@RequestBody MasterRole masterRole){
+        var isRoleValid =  masterRoleService.getMasterRoleByRole(masterRole.getRole());
+        if (isRoleValid != null){
+            return "Role " + isRoleValid.getRole() + " already exist";
+        }
         MasterRole newMasterRole = masterRoleService.insertMasterRole(masterRole);
         System.out.printf("\nID : %d",newMasterRole.getId());
-        System.out.printf("\nRoleName : %s",newMasterRole.getRole_name());
+        System.out.printf("\nRole : %s",newMasterRole.getRole());
         return "Insert Master Role";
     }
 

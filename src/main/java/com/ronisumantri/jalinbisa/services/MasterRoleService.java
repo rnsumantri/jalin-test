@@ -20,7 +20,7 @@ public class MasterRoleService {
         roles.forEach(masterRole -> {
             GetAllRoles getAllRoles = GetAllRoles.builder()
                     .id(masterRole.getId())
-                    .roleName(masterRole.getRole_name())
+                    .role(masterRole.getRole())
                     .insert(masterRole.getInsert())
                     .read(masterRole.getRead())
                     .update(masterRole.getUpdate())
@@ -38,7 +38,7 @@ public class MasterRoleService {
 
     public void update(Long id, MasterRole masterRole){
         MasterRole oldRole = masterRoleRepository.getOne(id);
-        oldRole.setRole_name(masterRole.getRole_name());
+        oldRole.setRole(masterRole.getRole());
         oldRole.setInsert(masterRole.getInsert());
         oldRole.setUpdate(masterRole.getUpdate());
         oldRole.setRead(masterRole.getRead());
@@ -50,4 +50,10 @@ public class MasterRoleService {
     public void delete(Long id){
         masterRoleRepository.deleteById(id);
     }
+
+    public MasterRole getMasterRoleByRole(String role) {
+        MasterRole masterRole = masterRoleRepository.findMasterRoleByRole(role).orElse(null);
+        return masterRole;
+    }
+
 }

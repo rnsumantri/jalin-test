@@ -22,6 +22,10 @@ public class MasterUserController {
 
     @PostMapping("/insert")
     public String saveUsers(@RequestBody MasterUsers masterUsers){
+        var isUsernameValid = masterUserService.getUserByUsername(masterUsers.getUsername());
+        if (isUsernameValid != null){
+        return "Username " + isUsernameValid.getUsername() + " already exist";
+        }
         MasterUsers newMasterUser = masterUserService.insertMasterUser(masterUsers);
         System.out.printf("\nID : %d",newMasterUser.getId());
         System.out.printf("\nName : %s",newMasterUser.getName());

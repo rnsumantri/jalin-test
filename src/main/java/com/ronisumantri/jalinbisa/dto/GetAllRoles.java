@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class GetAllRoles {
     private Long id;
-    private String roleName;
+    private String role;
     private Boolean insert;
     private Boolean read;
     private Boolean update;

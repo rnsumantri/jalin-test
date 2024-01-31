@@ -37,7 +37,7 @@ First run:
    --header 'Authorization: Basic TXVobGlzOnBhc3N3b3Jk' \
    --header 'Cookie: JSESSIONID=8F599F14BE8B5335EEF59AD342F8B4C8' \
    --data '{
-   "role_name":"Manager IT",
+   "role":"Manager IT",
    "insert":true,
    "read":true,
    "update":true,
@@ -76,7 +76,7 @@ First run:
    --header 'Cookie: JSESSIONID=8F599F14BE8B5335EEF59AD342F8B4C8' \
    --data '{
    "id":4,
-   "role_name":"Manager",
+   "role":"Manager",
    "insert":true,
    "read":true,
    "update":true,
