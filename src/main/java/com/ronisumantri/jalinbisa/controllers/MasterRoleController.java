@@ -36,7 +36,7 @@ public class MasterRoleController {
 
     @PutMapping("/update/{id}")
     public String updateMasterRole(@PathVariable Long id, @RequestBody MasterRole masterRole){
-        if (!masterRoleRepository.existsById(masterRole.getId()) || !masterRoleRepository.existsById(id)) {
+        if (!masterRoleRepository.existsById(id)) {
             return "Master role Id not found";
         }
 
