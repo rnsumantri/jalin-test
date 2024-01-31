@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "1b571442-de1d-4b7b-8088-2d7ac6335bba",
+		"name": "Jalin",
+		"description": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "18143152"
+	},
+	"item": [
+		{
+			"name": "get all roles",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "Muhlis",
+						"password": "password"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Signature",
+						"value": "1A79F67E43C8E64A0231DB8745FDB67902216E071D741DF0F15C95DC983CA8A9",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": "localhost:8080/api/roles/list-role"
+			},
+			"response": []
+		},
+		{
+			"name": "get all list users",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "Muhlis",
+						"password": "password"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/api/users/list-all"
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Role",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic TXVobGlzOnBhc3N3b3Jk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"role\":\"Manager\",\n    \"insert\":true,\n    \"read\":true,\n    \"update\":true,\n    \"delete\":false,\n    \"is_active\":true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/api/roles/insert"
+			},
+			"response": []
+		},
+		{
+			"name": "Insert User",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "Muhlis",
+						"password": "password"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"ipul\",\n    \"name\":\"James\",\n    \"phone\":\"08777777\",\n    \"createdBy\":\"admin\",\n    \"modifiedBy\":\"admin\",\n    \"isActive\":true,\n    \"hashPassword\":\"password\",\n    \"masterRole\":{\n        \"id\":1\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/api/users/insert"
+			},
+			"response": []
+		},
+		{
+			"name": "edit master role",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "Muhlis",
+						"password": "password"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"role\":\"Manager\",\n    \"insert\":true,\n    \"read\":true,\n    \"update\":true,\n    \"delete\":false,\n    \"is_active\":true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/api/roles/update/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete master role",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "Muhlis",
+						"password": "password"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/api/roles/delete/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Print report",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "Muhlis",
+						"password": "password"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"url": "localhost:8080/api/report/print"
+			},
+			"response": []
+		}
+	]
+}
