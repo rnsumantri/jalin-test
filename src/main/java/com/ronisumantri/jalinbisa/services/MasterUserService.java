@@ -24,6 +24,7 @@ public class MasterUserService {
         users.forEach(masterUsers -> {
             GetAllUsers getAllUsers = GetAllUsers.builder()
                     .id(masterUsers.getId())
+                    .username(masterUsers.getUsername())
                     .name(masterUsers.getName())
                     .phone(masterUsers.getPhone())
                     .roleId(masterUsers.getMasterRole().getId())
